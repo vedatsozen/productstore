@@ -1,0 +1,146 @@
+body {
+      text-align: center;
+      overflow-y: scroll;
+    
+}
+
+ * {
+      box-sizing: border-box;
+ }
+
+ h1.maintitle {
+      margin: auto;
+      margin-top: 10px;
+      font-size: 40px;
+      letter-spacing: 3px;
+      color: red;
+ }
+
+ input#search {
+      margin: auto;
+      margin-top: 20px;
+      height:40px;
+      width:400px;
+      border:1px solid lightgrey;
+      text-align: center;
+ }
+
+ input:focus {
+      outline: none;
+ }
+ 
+#container {
+      margin: auto;
+      margin-top: 20px;
+      height: fit-content;
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+}
+
+.productdiv {
+      height: 400px;
+      width: 20%;
+      padding: 15px;
+      position: relative;
+      cursor: pointer;
+      transition:500ms ease;
+      box-shadow: 0 0 2px black;
+      border-radius: 5px;
+}
+
+.productdiv:hover {
+      box-shadow: 0 0 20px black;
+      transition: 500ms ease;
+}
+
+.productimg {
+      height:200px;
+      width: 100%;
+}
+
+h1.title {
+      font-size:20px;
+      letter-spacing: 2px;
+}
+
+p.description {
+      font-size:13px;
+      letter-spacing: 2px;
+}
+
+p.price {
+      position: absolute;
+      bottom:5px;
+      font-size: 20px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      left: 50%;
+      transform: translate(-50%);
+}
+
+ul {
+      display: block;
+      margin: auto;
+      margin-top: 20px !important;
+      list-style: none;
+      padding: 0px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      width: fit-content;
+      gap: 5px;
+}
+
+li {
+      display: inline-block;
+}
+
+ul > li > a {
+      display: block;
+      font-size: 20px;
+      letter-spacing: 4px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: red;
+      color: white;
+      padding: 10px;
+      text-decoration: none;
+      cursor: pointer;
+}
+
+ul > li > a:hover {
+      background-color: rgb(121, 8, 8);
+      transition: 300ms ease;
+}
+
+ul > li > a:active {
+      transform: scale(0.95);
+      transition: none !important;
+}
+
+@media only screen and (max-width:480px) {
+      #container {
+            width: 100%;
+            flex-direction: column;
+      }
+
+      .productdiv {
+            margin-top: 5px;
+            width: 100%;
+      }
+
+      ul {
+            display: none;
+      }
+
+      input#search {
+            width: 90%;
+      }
+}

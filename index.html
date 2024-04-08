@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document</title>
+      <link rel="stylesheet" href="style.css">
+      
+</head>
+<body>
+
+<h1 class="maintitle">Welcome to Our Products Store</h1>
+      
+<input type="text" id="search" oninput="filterProducts()">
+
+<ul>
+      <li>
+            <a href="#" onclick="allproducts()">all</a>
+      </li>
+
+      <li>
+            <a href="#" onclick="electronics()">electronics</a>
+      </li>
+
+      <li>
+            <a href="#" onclick="jewelery()">jewellery</a>
+      </li>
+
+      <li>
+            <a href="#" onclick="mensclothing()">men's clothing</a>
+      </li>
+
+      <li>
+            <a href="#" onclick="womensclothing()">women's clothing</a>
+      </li>
+</ul>
+
+<div id="container"></div>
+
+<script>
+
+const container = document.getElementById("container");
+
+let data;
+
+fetch('https://fakestoreapi.com/products')
+            .then(res=>res.json())
+            .then(fetchedData=> {
+      
+data = fetchedData;
+
+data.forEach(product => {
+
+container.innerHTML += `
+
+<div class="productdiv">
+<img class="productimg" src=${product.image} >
+<h1 class="title">${product.title}</h1>
+<p class="price">${product.price} EURO</p>
+</div>
+
+`;
+
+});
+});
+
+function allproducts() {
+
+container.innerHTML = "";
+
+data.forEach(product => {
+
+container.innerHTML += `
+
+<div class="productdiv">
+<img class="productimg" src=${product.image} >
+<h1 class="title">${product.title}</h1>
+<p class="price">${product.price} EURO</p>
+</div>
+
+`;
+
+});
+}
+
+function filterProducts() {
+
+let input = document.getElementById("search").value.toLowerCase();
+
+let filteredproducts = data.filter(item => item.title.toLowerCase().includes(input)) ;
+
+container.innerHTML = "";
+
+filteredproducts.forEach(product => {
+      
+      
+      container.innerHTML += `
+      
+      <div class="productdiv">
+      <img class="productimg" src=${product.image} >
+      <h1 class="title">${product.title}</h1>
+      <p class="price">${product.price} EURO</p>
+      </div>
+      
+      `;
+      
+      });
+}
+
+function electronics() {
+
+let electronics = data.filter(item => item.category.toLowerCase() == "electronics") ;
+
+container.innerHTML = "";
+
+electronics.forEach(product => {
+      
+      
+      container.innerHTML += `
+      
+      <div class="productdiv">
+      <img class="productimg" src=${product.image} >
+      <h1 class="title">${product.title}</h1>
+      <p class="price">${product.price} EURO</p>
+      </div>
+      
+      `;
+      
+      });
+}
+
+function jewelery() {
+
+let jewelery = data.filter(item => item.category.toLowerCase() == "jewelery") ;
+
+container.innerHTML = "";
+
+jewelery.forEach(product => {
+      
+      
+      container.innerHTML += `
+      
+      <div class="productdiv">
+      <img class="productimg" src=${product.image} >
+      <h1 class="title">${product.title}</h1>
+      <p class="price">${product.price} EURO</p>
+      </div>
+      
+      `;
+      
+      });
+}
+
+function mensclothing() {
+
+let mensclothing = data.filter(item => item.category.toLowerCase() == "men's clothing") ;
+
+container.innerHTML = "";
+
+mensclothing.forEach(product => {
+      
+      
+      container.innerHTML += `
+      
+      <div class="productdiv">
+      <img class="productimg" src=${product.image} >
+      <h1 class="title">${product.title}</h1>
+      <p class="price">${product.price} EURO</p>
+      </div>
+      
+      `;
+      
+      });
+}
+
+function womensclothing() {
+
+let womensclothing = data.filter(item => item.category.toLowerCase() == "women's clothing") ;
+
+container.innerHTML = "";
+
+womensclothing.forEach(product => {
+      
+      
+      container.innerHTML += `
+      
+      <div class="productdiv">
+      <img class="productimg" src=${product.image} >
+      <h1 class="title">${product.title}</h1>
+      <p class="price">${product.price} EURO</p>
+      </div>
+      
+      `;
+      
+      });
+}
+
+</script>
+</body>
+</html>
